@@ -1,0 +1,30 @@
+@media(min-width:768px){
+    .profile__pictures{float: left;margin: 15px;}
+    .profile-picture{width: 100%;}
+    .profile-picture__picture{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media(max-width:768px){
+    .profile__pictures
+    {
+        width: 29%;
+        display: inline-block;
+        vertical-align: top;
+        margin: 5px;
+    }
+    .profile-picture
+    {
+        width: 100%;
+        margin-left: 10%;
+        margin-bottom: 5px;
+    }
+    .profile-picture__picture {
+        width: 100%;
+        min-height: 100px;
+        max-height: 100px;
+        object-fit: cover;
+    }
+}

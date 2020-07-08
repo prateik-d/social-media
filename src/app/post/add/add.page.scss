@@ -1,0 +1,24 @@
+.header{    
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: 50px;
+    // margin-bottom: 50px;
+}
+
+.image-upload>input {display: none;}
+.image-upload{float: left;}
+#file-input{visibility: hidden;}
+
+.edit-profile{
+    display: table;
+    margin: 0 auto;
+    min-width: 1000px;
+    position: relative;
+    top: 100px;
+}
+.navigation{position: absolute;}
+
+.profile-form__avatar {
+    height: 75px!important;
+    width: 75px!important;
+}

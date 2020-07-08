@@ -1,0 +1,146 @@
+<ion-content>
+    <nav class="navigation">
+        <a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
+            
+            
+                <img 
+                    src="../../assets/images/navLogo.png"
+                    alt="logo"
+                    title="logo"
+                    class="navigation__logo"
+                />
+            
+        </a>
+        <div class="navigation__search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="navigation__icons">
+            <a href="explore.html" class="navigation__link">
+                <i class="fa fa-compass"></i>
+            </a>
+            <a href="#" class="navigation__link">
+                <i class="fa fa-heart-o"></i>
+            </a>
+            <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="navigation__link">
+                <i class="fa fa-user-o"></i>
+            </a>
+        </div>
+    </nav>
+    <main class="edit-profile">
+        <section class="profile-form">
+            <header class="profile-form__header">
+                <div class="profile-form__avatar-container image-upload">
+                    <label for="file-input">
+
+                            <div *ngIf="photo;else defaultDp">
+
+                                <img 
+                                    src="{{photo}}"
+                                    class="profile-form__avatar"
+                                />
+                            </div>
+                    
+                            <ng-template #defaultDp>
+                                
+                                <img 
+                                    src="../../assets/images/profile.png"
+                                    class="profile-form__avatar"
+                                />
+                            </ng-template>
+
+                    </label>
+                    <!-- <input id="file-input" type="file" (change)="getBase64($event)" accept="image/*" /> -->
+                    <input id="file-input" type="file" (change)="uploadFile($event.target.files)" accept="image/*" />
+                </div>
+                <h4 class="profile-form__title">{{name}}</h4>        
+            </header>
+            <form action="#" (ngSubmit)="submit($event)" class="edit-profile__form">
+                <div class="edit-profile__form-row">
+                    <label for="name" class="edit-profile__label">Name</label>
+                    <input 
+                        id="name"
+                        type="text"
+                        class="edit-profile__input"
+                        value="{{name}}"
+                    />
+                </div>
+                <div class="edit-profile__form-row">
+                    <label for="username" class="edit-profile__label">Username</label>
+                    <input 
+                        type="text"
+                        id="username"
+                        class="edit-profile__input"
+                        value="{{username}}"
+                        (blur)="check_uname($event.target.value)"
+                    />
+                </div>
+                <div class="edit-profile__form-row">
+                    <label for="website" class="edit-profile__label">Website</label>
+                    <input
+                        type="url"
+                        id="website"
+                        class="edit-profile__input"
+                        value="{{website}}"
+                    />
+                </div>
+                <div class="edit-profile__form-row">
+                    <label for="bio" class="edit-profile__label">Bio</label>
+                    <textarea id="bio" class="edit-profile__textarea">{{bio}}</textarea>
+                </div>
+                <div class="edit-profile__form-row">
+                    <label for="email" class="edit-profile__label">Email</label>
+                    <input 
+                        type="email"
+                        class="edit-profile__input"
+                        id="email"
+                        value="{{email}}"
+                        (blur)="check_email($event.target.value)"
+                    />
+                </div>
+                <div class="edit-profile__form-row">
+                    <label for="phone-number" class="edit-profile__label">Phone Number</label>
+                    <input 
+                        type="text"
+                        class="edit-profile__input"
+                        id="phone_number"
+                        value="{{phone_number}}"
+                    />
+                </div>
+                <div class="edit-profile__form-row">
+                    <label for="gender" class="edit-profile__label">Gender</label>
+                    <select id="gender">
+                        <option value="" disabled>Select</option>
+                        <option 
+                                value="Male"
+                                [selected]="gender === 'Male'"
+                            >
+                            Male
+                        </option>
+                        <option 
+                                value="Female"
+                                [selected]="gender === 'Female'"
+                            >
+                            Female
+                        </option>
+                        <option 
+                                value="Others"
+                                [selected]="gender === 'Others'"
+                            >
+                            Male
+                        </option>
+                    </select>
+                </div>
+                <!-- <div class="edit-profile__form-row">
+                    <span class="edit-profile__label">Similar Account Suggestions</span>
+                    <input type="checkbox" id="similar" checked>
+                    <label for="similar">Include your account when recommending similar accounts people might want to follow. <a href="#">[?]</a></label>
+                </div> -->
+                <div class="edit-profile__form-row">
+                    <label class="edit-profile__label"></label>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </section>
+    </main>
+</ion-content>

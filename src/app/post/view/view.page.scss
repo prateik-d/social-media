@@ -1,0 +1,19 @@
+.photo__avatar {
+    height: 65px;
+    width: 65px;
+}
+.click_action{
+    float: right;
+    margin-right: 20px;
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+    color: #888;
+}
+.photo__file{    
+    object-fit: contain;
+    height: 40vh;
+    width: 100%;
+}
+.action{margin-left: 30vw;}
+.action a{margin: 10px;}
