@@ -26,12 +26,12 @@
         .photo *{
             background-color: transparent;
         }
-        .photo__time-ago{
+        /* .photo__time-ago{
             border:none;
         }
         .photo__add-comment-container{
             display: none;
-        }
+        } */
         /* Footer */
         .footer{
             justify-content: center;

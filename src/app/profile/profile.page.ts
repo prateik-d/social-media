@@ -54,7 +54,8 @@ export class ProfilePage implements OnInit {
   ngOnInit() 
   {
     this.firestore.collection('users').doc(localStorage.getItem('uid')).valueChanges().subscribe(res=>{
-      console.log(res);
+      // console.log(res);
+      // console.log(localStorage.getItem('uid'));
 
       this.user = res;
 

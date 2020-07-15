@@ -67,7 +67,15 @@ export class AuthenticationService {
           .collection('users')
           .doc(user[0].uid)
           .set(
-            { User }, { merge: true }
+            // { User }, { merge: true }
+            {
+              uid: user[0].uid,
+              email: user[0].email,
+              displayName: user[0].displayName,
+              photoURL: user[0].photoURL,
+              emailVerified: user[0].emailVerified,
+            },
+            { merge: true }
             )
   }
 

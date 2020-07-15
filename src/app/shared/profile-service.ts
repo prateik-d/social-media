@@ -127,4 +127,24 @@ export class ProfileService {
         created_date: post[0].created_date,
       })
     }
+
+  follow(data)
+  {
+    // console.log(data);
+    this.firestore.collection('follow_data').doc(data.id,).set({
+        id: data.id,
+        followed_person:data.followed_person,
+        following_person:data.following_person,
+        created_date: data.created_date,
+      }).then();
+  }
+
+  unfollow(id)
+  {
+    console.log(id);
+    return this.firestore
+      .collection('follow_data')
+      .doc(id)
+      .delete()
+  }
 }

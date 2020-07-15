@@ -1,6 +1,6 @@
 <ion-content>
   <nav class="navigation">
-      <a href="feed.html">
+      <a href="/">
           <img 
               src="../../../assets/images/navLogo.png"
               alt="logo"
@@ -13,7 +13,10 @@
           <input type="text" placeholder="Search">
       </div>
       <div class="navigation__icons">
-          <a href="explore.html" class="navigation__link">
+        <a [routerLink]="['/explore-user']"  class="navigation__link">
+            <i class="fa fa-user-plus"></i>
+          </a>
+          <a [routerLink]="['/explore-post']"  class="navigation__link">
               <i class="fa fa-compass"></i>
           </a>
           <a href="#" class="navigation__link">
@@ -27,17 +30,17 @@
   <main class="feed">
       <section class="photo">
           <header class="photo__header">
-              <div class="photo__header-column">
+              <div class="photo__header-column dp">
                   <img
                       class="photo__avatar"
                       src="{{photo}}"
                   />
               </div>
-              <div class="photo__header-column">
+              <div class="photo__header-column info">
                   <span class="photo__username">{{name}}</span>
                   <span class="photo__location">{{location}}</span>
               </div>
-              <div class="action">
+              <div class="action" *ngIf="current_id == uid">
                   <a [routerLink]="['/edit-post', pid]">Edit</a>
                   <a href="javascript:void(0)" (click)="delete()">Delete</a>
               </div>
@@ -81,18 +84,37 @@
               </div>
               <span class="">{{desc}}</span>
               <span class="photo__likes">35 likes</span>
-              <ul class="photo__comments">
+              <ul class="photo__comments" *ngFor="let comment of comments">
                   <li class="photo__comment">
-                      <span class="photo__comment-author">serranoarevalo</span>wow this is great!
-                  </li>
-                  <li class="photo__comment">
-                      <span class="photo__comment-author">lynn</span>no is not!
+                      
+                    <span class="photo__comment-author">{{comment.uid.displayName}}</span>
+                    {{comment.comment}}
+                    <div class="c-action"  >
+                        <span  *ngIf="current_id == comment.uid.uid">
+                            <a href="javascript:void(0)" (click)="edit_comment(comment.id)">Edit</a>
+                        </span>
+                        <span *ngIf="(current_id == comment.uid.uid) || (current_id == uid)">
+                            <a href="javascript:void(0)" (click)="delete_comment(comment.id)">Delete</a>
+                        </span>
+                    </div>
+                    <div *ngIf="edit === comment.id">
+                        <form action="#" (ngSubmit)="update_comment()" id="edit_comment" >
+                            <input type="hidden" value="{{comment.id}}" id="c_id" />
+                            <input type="hidden" value="{{uid}}" id="uid" />
+                            <input type="hidden" value="{{comment.created_date}}" id="created_date" />
+                            <textarea class="photo__add-comment" id="existing_comment" required>{{existing_comment}}</textarea>
+                            <input type="submit" value="..." class="comment_button" />
+                        </form>
+                    </div>
                   </li>
               </ul>
               <span class="photo__time-ago">11 hours ago</span>
               <div class="photo__add-comment-container">
-                  <textarea placeholder="Add a comment..." class="photo__add-comment"></textarea>
-                  <i class="fa fa-ellipsis-h"></i>
+                    <form action="#" (ngSubmit)="add_new_comment()" >
+                        <textarea placeholder="Add a comment..." class="photo__add-comment" id="comment" #add_cmnt></textarea>
+                        <!-- <span (click)="add_new_comment()"><i class="fa fa-ellipsis-h"></i></span> -->
+                        <input type="submit" value="..." class="comment_button" />
+                    </form>
               </div>
           </div>
       </section>

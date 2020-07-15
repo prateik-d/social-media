@@ -15,5 +15,16 @@
     height: 40vh;
     width: 100%;
 }
-.action{margin-left: 30vw;}
+.action{width: 35%;text-align: right;}
 .action a{margin: 10px;}
+.dp{width: 20%;}
+.info{width: 45%;}
+.photo__add-comment{width: 95%;}
+.comment_button{
+    background-color: transparent!important;
+    color: #888!important;
+    padding: 0!important;
+    font-size: 15px!important;
+    position: relative;
+    top: -20px;
+}

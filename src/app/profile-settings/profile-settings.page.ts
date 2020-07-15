@@ -90,7 +90,9 @@ export class ProfileSettingsPage implements OnInit {
 
 
     this.firestore.collection('users').doc(localStorage.getItem('uid')).valueChanges().subscribe(res=>{
-      // console.log(res.User);
+      console.log(res);
+
+      console.log(localStorage.getItem('uid'));
 
       this.user = res;
 

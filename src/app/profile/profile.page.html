@@ -1,7 +1,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <ion-content>
     <nav class="navigation">
-    <a href="feed.html">
+    <a [routerLink]="['/dashboard']">
         <img 
             src="../../assets/images/navLogo.png"
             alt="logo"
@@ -14,7 +14,10 @@
         <input type="text" placeholder="Search">
     </div>
     <div class="navigation__icons">
-        <a href="explore.html" class="navigation__link">
+        <a [routerLink]="['/explore-user']"  class="navigation__link">
+            <i class="fa fa-user-plus"></i>
+          </a>
+        <a [routerLink]="['/explore-post']" class="navigation__link">
             <i class="fa fa-compass"></i>
         </a>
         <a href="#" class="navigation__link">

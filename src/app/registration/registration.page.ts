@@ -36,7 +36,7 @@ export class RegistrationPage implements OnInit {
             uid: res.user.uid, 
             displayName: name.value, 
             email: email.value, 
-            photoURL: 'asdfbgvn', 
+            // photoURL: 'asdfbgvn', 
             emailVerified: 'true', 
             test: 'test'
           }
