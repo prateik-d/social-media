@@ -1,0 +1,53 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<ion-content>
+    <nav class="navigation">
+    <a [routerLink]="['/dashboard']">
+        <img 
+            src="../../assets/images/navLogo.png"
+            alt="logo"
+            title="logo"
+            class="navigation__logo"
+        />
+    </a>
+    <div class="navigation__search-container">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search">
+    </div>
+    <div class="navigation__icons">
+        <a [routerLink]="['/explore-user']"  class="navigation__link">
+            <i class="fa fa-user-plus"></i>
+        </a>
+        <a [routerLink]="['/explore-post']" class="navigation__link">
+            <i class="fa fa-compass"></i>
+        </a>
+        <a href="#" class="navigation__link">
+            <i class="fa fa-heart-o"></i>
+        </a>
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="navigation__link">
+            <i class="fa fa-user-o"></i>
+        </a>
+    </div>
+    </nav>
+    <main class="profile-container">
+    <section class="profile">
+        
+        <div class="profile__pictures" *ngFor="let post of sort_posts">
+            <a [routerLink]="['/view-post', post.id]" routerLinkActive="router-link-active"  class="profile-picture">
+                <img
+                    src="{{post.loc}}"
+                    class="profile-picture__picture"
+                />
+                <div class="profile-picture__overlay">
+                    <span class="profile-picture__number">
+                        <i class="fa fa-heart"></i> 450
+                    </span>
+                    <span class="profile-picture__number">
+                        <i class="fa fa-comment"></i> 39
+                    </span>
+                </div>
+            </a>
+            
+        </div>
+    </section>
+    </main>
+</ion-content>
