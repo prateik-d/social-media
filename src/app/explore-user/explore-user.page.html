@@ -1,0 +1,67 @@
+<ion-content>
+  <nav class="navigation">
+    <a href="/">
+        <img 
+            src="../../../assets/images/navLogo.png"
+            alt="logo"
+            title="logo"
+            class="navigation__logo"
+        />
+    </a>
+    <div class="navigation__search-container">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search">
+    </div>
+    <div class="navigation__icons">
+      <a [routerLink]="['/explore-user']"  class="navigation__link">
+          <i class="fa fa-user-plus"></i>
+        </a>
+        <a [routerLink]="['/explore-post']"  class="navigation__link">
+            <i class="fa fa-compass"></i>
+        </a>
+        <a href="#" class="navigation__link">
+            <i class="fa fa-heart-o"></i>
+        </a>
+        <a [routerLink]="['/profile']" class="navigation__link">
+            <i class="fa fa-user-o"></i>
+        </a>
+    </div>
+</nav>
+  <main class="explore">
+    <section class="people">
+        <ul class="people__list" >
+          <li class="people__person" *ngFor="let user of users">
+            <a [routerLink]="['/user', user.username]" routerLinkActive="router-link-active" >
+                  <div class="people__column">
+                      <div class="people__avatar-container">
+                        
+                          <div *ngIf="user.photoURL;else defaultDp">
+                            <img 
+                            src="{{user.photoURL}}"
+                            class="people__avatar"
+                            />
+                          </div>
+                          <ng-template #defaultDp>    
+                            <img 
+                            src="../../assets/images/profile.png"
+                            class="people__avatar"
+                            />
+                          </ng-template>
+                        </div>
+                        <div class="people__info">
+                          <span class="people__username">
+                            <!-- <img src="images/verified.png" /> -->
+                            {{user.username}}
+                          </span>
+                          <span class="people__full-name">{{user.displayName}}</span>
+                        </div>
+                      </div>
+                      <!-- <div class="people__column">
+                        <a href="#">Follow</a>
+                      </div> -->
+                    </a>
+              </li>
+            </ul>
+    </section>
+</main>
+</ion-content>
