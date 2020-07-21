@@ -1,8 +1,8 @@
 <ion-content>
   <nav class="navigation">
-    <a href="/">
+    <a [routerLink]="['/dashboard']">
         <img 
-            src="../../../assets/images/navLogo.png"
+            src="../../assets/images/navLogo.png"
             alt="logo"
             title="logo"
             class="navigation__logo"
@@ -13,20 +13,24 @@
         <input type="text" placeholder="Search">
     </div>
     <div class="navigation__icons">
-      <a [routerLink]="['/explore-user']"  class="navigation__link">
-          <i class="fa fa-user-plus"></i>
-        </a>
-        <a [routerLink]="['/explore-post']"  class="navigation__link">
-            <i class="fa fa-compass"></i>
-        </a>
-        <a href="#" class="navigation__link">
-            <i class="fa fa-heart-o"></i>
-        </a>
-        <a [routerLink]="['/profile']" class="navigation__link">
-            <i class="fa fa-user-o"></i>
+        <a [routerLink]="['/explore-user']"  class="navigation__link">
+            <!-- <i class="fa fa-user-plus"></i> -->
+            <img src="../../assets/icon/group.png" class="headder-icon"/>
+          </a>
+          <a [routerLink]="['/explore-post']" class="navigation__link">
+            <!-- <i class="fa fa-compass"></i> -->
+            <img src="../../assets/icon/compass.png" class="headder-icon"/>
+          </a>
+          <a [routerLink]="['/add-post']" class="navigation__link">
+            <!-- <i class="fa fa-heart-o"></i> -->
+            <img src="../../assets/icon/add-text.png" class="headder-icon"/>
+          </a>
+          <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="navigation__link">
+            <!-- <i class="fa fa-user-o"></i> -->
+            <img src="../../assets/icon/user.png" class="headder-icon"/>
         </a>
     </div>
-</nav>
+  </nav>
   <main class="explore">
     <section class="people">
         <ul class="people__list" >

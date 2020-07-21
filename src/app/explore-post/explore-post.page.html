@@ -1,33 +1,39 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <ion-content>
+    <!-- <app-header></app-header> -->
     <nav class="navigation">
-    <a [routerLink]="['/dashboard']">
-        <img 
-            src="../../assets/images/navLogo.png"
-            alt="logo"
-            title="logo"
-            class="navigation__logo"
-        />
-    </a>
-    <div class="navigation__search-container">
-        <i class="fa fa-search"></i>
-        <input type="text" placeholder="Search">
-    </div>
-    <div class="navigation__icons">
-        <a [routerLink]="['/explore-user']"  class="navigation__link">
-            <i class="fa fa-user-plus"></i>
+        <a [routerLink]="['/dashboard']">
+            <img 
+                src="../../assets/images/navLogo.png"
+                alt="logo"
+                title="logo"
+                class="navigation__logo"
+            />
         </a>
-        <a [routerLink]="['/explore-post']" class="navigation__link">
-            <i class="fa fa-compass"></i>
-        </a>
-        <a href="#" class="navigation__link">
-            <i class="fa fa-heart-o"></i>
-        </a>
-        <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="navigation__link">
-            <i class="fa fa-user-o"></i>
-        </a>
-    </div>
-    </nav>
+        <div class="navigation__search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="navigation__icons">
+            <a [routerLink]="['/explore-user']"  class="navigation__link">
+                <!-- <i class="fa fa-user-plus"></i> -->
+                <img src="../../assets/icon/group.png" class="headder-icon"/>
+              </a>
+              <a [routerLink]="['/explore-post']" class="navigation__link">
+                <!-- <i class="fa fa-compass"></i> -->
+                <img src="../../assets/icon/compass.png" class="headder-icon"/>
+              </a>
+              <a [routerLink]="['/add-post']" class="navigation__link">
+                <!-- <i class="fa fa-heart-o"></i> -->
+                <img src="../../assets/icon/add-text.png" class="headder-icon"/>
+              </a>
+              <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="navigation__link">
+                <!-- <i class="fa fa-user-o"></i> -->
+                <img src="../../assets/icon/user.png" class="headder-icon"/>
+            </a>
+        </div>
+      </nav>
+      
     <main class="profile-container">
     <section class="profile">
         
