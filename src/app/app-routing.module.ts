@@ -19,15 +19,18 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   
-  // { path: 'reistration', loadChildren: './registration/registration.module#RegistrationPageModule', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome } },
-  {
-    path: 'registration',
-    loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationPageModule)
+  { 
+    path: 'registration', 
+    loadChildren: './registration/registration.module#RegistrationPageModule', 
+    canActivate: [AngularFireAuthGuard], 
+    data: { authGuardPipe: redirectLoggedInToHome } 
   },
+  
   {
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
   },
+  
   {
     path: 'profile',
     ...canActivate(redirectLogin),
@@ -57,6 +60,22 @@ const routes: Routes = [
     path: 'view-post/:id',
     ...canActivate(redirectLogin),
     loadChildren: () => import('./post/view/view.module').then( m => m.ViewPageModule)
+  },
+  {
+    path: 'user/:id',
+    loadChildren: () => import('./show-profile/show-profile.module').then( m => m.ShowProfilePageModule)
+  },
+  {
+    path: 'page-not-found',
+    loadChildren: () => import('./page-not-found/page-not-found.module').then( m => m.PageNotFoundPageModule)
+  },
+  {
+    path: 'explore-post',
+    loadChildren: () => import('./explore-post/explore-post.module').then( m => m.ExplorePostPageModule)
+  },
+  {
+    path: 'explore-user',
+    loadChildren: () => import('./explore-user/explore-user.module').then( m => m.ExploreUserPageModule)
   },
 ];
 

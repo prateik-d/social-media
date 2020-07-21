@@ -22,8 +22,14 @@ import { environment } from '../environments/environment';
 import { AuthenticationService } from "./../app/shared/authentication-service";
 import { AuthService } from "./../app/shared/auth.service";
 
+import { HeaderComponent } from './header/header.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent
+    
+  ],
   entryComponents: [],
   imports: [
     BrowserModule, 
