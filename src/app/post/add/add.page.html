@@ -1,64 +1,67 @@
-<nav class="navigation">
-  <a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
-      
-      
-          <img 
-              src="../../../assets/images/navLogo.png"
-              alt="logo"
-              title="logo"
-              class="navigation__logo"
-          />
-      
-  </a>
-  <div class="navigation__search-container">
-      <i class="fa fa-search"></i>
-      <input type="text" placeholder="Search">
-  </div>
-  <div class="navigation__icons">
-      <a [routerLink]="['/explore-user']"  class="navigation__link">
-        <i class="fa fa-user-plus"></i>
-      </a>
-      <a [routerLink]="['/explore-post']" class="navigation__link">
-          <i class="fa fa-compass"></i>
-      </a>
-      <a href="#" class="navigation__link">
-          <i class="fa fa-heart-o"></i>
-      </a>
-      <a [routerLink]="['/profile']"  class="navigation__link">
-          <i class="fa fa-user-o"></i>
-      </a>
-  </div>
-</nav>
-
-<main class="edit-profile">
-  <section class="profile-form">
-    <form action="#" class="edit-profile__form" (ngSubmit)="submit()" >
-      <div class="header">
-          <div class="profile-form__avatar-container image-upload">
-              <label for="file-input">
-
-                          <img 
-                              src="../../assets/images/post.png"
-                              class="profile-form__avatar"
-                          />
-              </label>
-              <input id="file-input" type="file"  accept="image/*" (change)="upload($event.target.files)" />
-          </div>        
+<ion-content>
+    <nav class="navigation">
+        <a [routerLink]="['/dashboard']">
+            <img 
+                src="../../assets/images/navLogo.png"
+                alt="logo"
+                title="logo"
+                class="navigation__logo"
+            />
+        </a>
+        <div class="navigation__search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search">
         </div>
+        <div class="navigation__icons">
+            <a [routerLink]="['/explore-user']"  class="navigation__link">
+                <!-- <i class="fa fa-user-plus"></i> -->
+                <img src="../../assets/icon/group.png" class="headder-icon"/>
+            </a>
+            <a [routerLink]="['/explore-post']" class="navigation__link">
+                <!-- <i class="fa fa-compass"></i> -->
+                <img src="../../assets/icon/compass.png" class="headder-icon"/>
+            </a>
+            <a [routerLink]="['/add-post']" class="navigation__link">
+                <!-- <i class="fa fa-heart-o"></i> -->
+                <img src="../../assets/icon/add-text.png" class="headder-icon"/>
+            </a>
+            <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="navigation__link">
+                <!-- <i class="fa fa-user-o"></i> -->
+                <img src="../../assets/icon/user.png" class="headder-icon"/>
+            </a>
+        </div>
+    </nav>
+  
+    <main class="edit-profile">
+        <section class="profile-form">
+            <form action="#" class="edit-profile__form" (ngSubmit)="submit()" >
+                <div class="header">
+                    <div class="profile-form__avatar-container image-upload">
+                        <label for="file-input">
+
+                            <img 
+                                src="../../assets/images/post.png"
+                                class="profile-form__avatar"
+                            />
+                        </label>
+                        <input id="file-input" type="file"  accept="image/*" (change)="upload($event.target.files)" />
+                    </div>        
+                </div>
           
-          <div class="edit-profile__form-row">
-              <label for="desc" class="edit-profile__label">Description</label>
-              <textarea id="desc" class="edit-profile__textarea" ></textarea>
-          </div>
+                <div class="edit-profile__form-row">
+                    <label for="desc" class="edit-profile__label">Description</label>
+                    <textarea id="desc" class="edit-profile__textarea" ></textarea>
+                </div>
           
-          <div class="edit-profile__form-row">
-              <label for="location" class="edit-profile__label">Location</label>
-              <input id="location" type="text" class="profile__input"  />
-          </div>
-         
-          <div class="edit-profile__form-row">
-              <input type="submit" value="Submit" >
-          </div>
-      </form>
-  </section>
-</main>
+                <div class="edit-profile__form-row">
+                    <label for="location" class="edit-profile__label">Location</label>
+                    <input id="location" type="text" class="profile__input"  />
+                </div>
+
+                <div class="edit-profile__form-row">
+                    <input type="submit" value="Submit" >
+                </div>
+            </form>
+        </section>
+    </main>
+</ion-content>

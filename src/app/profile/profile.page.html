@@ -1,91 +1,95 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <ion-content>
     <nav class="navigation">
-    <a [routerLink]="['/dashboard']">
-        <img 
-            src="../../assets/images/navLogo.png"
-            alt="logo"
-            title="logo"
-            class="navigation__logo"
-        />
-    </a>
-    <div class="navigation__search-container">
-        <i class="fa fa-search"></i>
-        <input type="text" placeholder="Search">
-    </div>
-    <div class="navigation__icons">
-        <a [routerLink]="['/explore-user']"  class="navigation__link">
-            <i class="fa fa-user-plus"></i>
-          </a>
-        <a [routerLink]="['/explore-post']" class="navigation__link">
-            <i class="fa fa-compass"></i>
+        <a [routerLink]="['/dashboard']">
+            <img 
+                src="../../assets/images/navLogo.png"
+                alt="logo"
+                title="logo"
+                class="navigation__logo"
+            />
         </a>
-        <a href="#" class="navigation__link">
-            <i class="fa fa-heart-o"></i>
-        </a>
-        <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="navigation__link">
-            <i class="fa fa-user-o"></i>
-        </a>
-    </div>
-    </nav>
-    <main class="profile-container">
-    <section class="profile">
-        <header class="profile__header">
-            <div class="profile__avatar-container">
-                <div *ngIf="photo;else defaultDp">
-                    <img 
-                        src="{{photo}}"
-                        class="profile__avatar"
-                    />
-                </div>
-                <ng-template #defaultDp>    
-                    <img 
-                        src="../../assets/images/profile.png"
-                        class="profile__avatar"
-                    />
-                </ng-template>
-            </div>
-            <div class="profile__info">
-                <div class="profile__name">
-                    <h1 class="profile__title">{{name}}</h1>
-                    <a [routerLink]="['/profile-settings']" routerLinkActive="router-link-active"  class="profile__button u-fat-text">Edit profile</a>
-                    <i class="fa fa-cog fa-2x" id="cog"></i>
-                </div>
-                <ul class="profile__numbers">
-                    <li class="profile__posts">
-                        <span class="profile__number u-fat-text">{{no_of_posts}}</span> posts
-                    </li>
-                    <li class="profile__followers">
-                        <span class="profile__number u-fat-text">40</span> followers
-                    </li>
-                    <li class="profile__following">
-                        <span class="profile__number u-fat-text">134</span> following
-                    </li>
-                </ul>
-                <div class="profile__bio">
-                    <p class="profile__full-bio">{{bio}}</p><br>
-                    <a class="profile__full-bio" href="{{website}}" target="_blank">{{website}}</a>
-                    <!-- <a href="http://serranoarevalo.com" class="profile__link u-fat-text">serranoarevalo.com</a> -->
-                </div>
-            </div>
-        </header>
-        <div class="profile__pictures" *ngFor="let post of posts">
-            <a [routerLink]="['/view-post', post.id]" routerLinkActive="router-link-active"  class="profile-picture">
-                <img
-                    src="{{post.loc}}"
-                    class="profile-picture__picture"
-                />
-                <div class="profile-picture__overlay">
-                    <span class="profile-picture__number">
-                        <i class="fa fa-heart"></i> 450
-                    </span>
-                    <span class="profile-picture__number">
-                        <i class="fa fa-comment"></i> 39
-                    </span>
-                </div>
-            </a>
-            
+        <div class="navigation__search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search">
         </div>
-    </section>
+        <div class="navigation__icons">
+            <a [routerLink]="['/explore-user']"  class="navigation__link">
+                <!-- <i class="fa fa-user-plus"></i> -->
+                <img src="../../assets/icon/group.png" class="headder-icon"/>
+            </a>
+            <a [routerLink]="['/explore-post']" class="navigation__link">
+                <!-- <i class="fa fa-compass"></i> -->
+                <img src="../../assets/icon/compass.png" class="headder-icon"/>
+            </a>
+            <a [routerLink]="['/add-post']" class="navigation__link">
+                <!-- <i class="fa fa-heart-o"></i> -->
+                <img src="../../assets/icon/add-text.png" class="headder-icon"/>
+            </a>
+            <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="navigation__link">
+                <!-- <i class="fa fa-user-o"></i> -->
+                <img src="../../assets/icon/user.png" class="headder-icon"/>
+            </a>
+        </div>
+    </nav>
+      
+    <main class="profile-container">
+        <section class="profile">
+            <header class="profile__header">
+                <div class="profile__avatar-container">
+                    <div *ngIf="photo;else defaultDp">
+                        <img 
+                            src="{{photo}}"
+                            class="profile__avatar"
+                        />
+                    </div>
+                    <ng-template #defaultDp>    
+                        <img 
+                            src="../../assets/images/profile.png"
+                            class="profile__avatar"
+                        />
+                    </ng-template>
+                </div>
+                <div class="profile__info">
+                    <div class="profile__name">
+                        <h1 class="profile__title">{{name}}</h1>
+                        <a [routerLink]="['/profile-settings']" routerLinkActive="router-link-active"  class="profile__button u-fat-text">Edit profile</a>
+                        <i class="fa fa-cog fa-2x" id="cog"></i>
+                    </div>
+                    <ul class="profile__numbers">
+                        <li class="profile__posts">
+                            <span class="profile__number u-fat-text">{{no_of_posts}}</span> posts
+                        </li>
+                        <li class="profile__followers">
+                            <span class="profile__number u-fat-text">40</span> followers
+                        </li>
+                        <li class="profile__following">
+                            <span class="profile__number u-fat-text">134</span> following
+                        </li>
+                    </ul>
+                    <div class="profile__bio">
+                        <p class="profile__full-bio">{{bio}}</p><br>
+                        <a class="profile__full-bio" href="{{website}}" target="_blank">{{website}}</a>
+                        <!-- <a href="http://serranoarevalo.com" class="profile__link u-fat-text">serranoarevalo.com</a> -->
+                    </div>
+                </div>
+            </header>
+            <div class="profile__pictures" *ngFor="let post of posts">
+                <a [routerLink]="['/view-post', post.id]" routerLinkActive="router-link-active"  class="profile-picture">
+                    <img
+                        src="{{post.loc}}"
+                        class="profile-picture__picture"
+                    />
+                    <div class="profile-picture__overlay">
+                        <span class="profile-picture__number">
+                            <i class="fa fa-heart"></i> 450
+                        </span>
+                        <span class="profile-picture__number">
+                            <i class="fa fa-comment"></i> 39
+                        </span>
+                    </div>
+                </a>            
+            </div>
+        </section>
     </main>
 </ion-content>
