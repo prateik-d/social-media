@@ -1,0 +1,14 @@
+.photo__file{
+    object-fit: contain;
+    height: 40vh;
+    width: 100%;
+}
+.photo__add-comment{width: 95%;}
+.comment_button{
+    background-color: transparent!important;
+    color: #888!important;
+    padding: 0!important;
+    font-size: 15px!important;
+    position: relative;
+    top: -20px;
+}

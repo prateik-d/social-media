@@ -1,23 +1,107 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    <ion-title>dashboard</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <h2>Hello, User</h2>
-    </ion-row>
-    
-    <ion-row>
-      <ion-button type="submit" (click)="authService.SignOut()" expand="block">Logout</ion-button>
-      <ion-button [routerLink]="['/profile-settings']">ps</ion-button>
-      <ion-button [routerLink]="['/profile']">Profile</ion-button>
-      <ion-button [routerLink]="['/add-post']">Add Post</ion-button>
-    </ion-row>
-  </ion-grid>
+    <!-- <app-header></app-header> -->
+    <nav class="navigation">
+        <a [routerLink]="['/dashboard']">
+            <img 
+                src="../../assets/images/navLogo.png"
+                alt="logo"
+                title="logo"
+                class="navigation__logo"
+            />
+        </a>
+        <div class="navigation__search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="navigation__icons">
+            <a [routerLink]="['/explore-user']"  class="navigation__link">
+                <!-- <i class="fa fa-user-plus"></i> -->
+                <img src="../../assets/icon/group.png" class="headder-icon"/>
+              </a>
+              <a [routerLink]="['/explore-post']" class="navigation__link">
+                <!-- <i class="fa fa-compass"></i> -->
+                <img src="../../assets/icon/compass.png" class="headder-icon"/>
+              </a>
+              <a [routerLink]="['/add-post']" class="navigation__link">
+                <!-- <i class="fa fa-heart-o"></i> -->
+                <img src="../../assets/icon/add-text.png" class="headder-icon"/>
+              </a>
+              <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="navigation__link">
+                <!-- <i class="fa fa-user-o"></i> -->
+                <img src="../../assets/icon/user.png" class="headder-icon"/>
+            </a>
+        </div>
+      </nav>
+    <main class="feed">
+        <section class="photo" *ngFor="let post of posts">
+            <header class="photo__header">
+                <div class="photo__header-column">
+                    <img
+                        class="photo__avatar"
+                        src="{{post.uid.photoURL}}"
+                    />
+                </div>
+                <div class="photo__header-column">
+                    <span class="photo__username">{{post.uid.displayName}}</span>
+                    <span class="photo__location">{{post.location}}</span>
+                </div>
+            </header>
+            <div class="photo__file-container">
+                <img
+                    class="photo__file"
+                    src="{{post.loc}}"
+                />
+            </div>
+            <div class="photo__info">
+                <div class="photo__icons">
+                    <span class="photo__icon">
+                        <i class="fa fa-heart-o heart fa-lg"></i>
+                    </span>
+                    <span class="photo__icon">
+                        <i class="fa fa-comment-o fa-lg"></i>
+                    </span>
+                </div>
+                <span class="photo__likes">35 likes</span>
+                <span class="desc">{{post.desc}}</span>
+                
+                <ul class="photo__comments" *ngFor="let comment of comments">
+                    <li class="photo__comment" *ngIf="comment.pid === post.id">
+                        
+                      <span class="photo__comment-author">{{comment.uid.displayName}}</span>
+                      {{comment.comment}}
+
+                      
+                      <div class="c-action"  >
+                          <span  *ngIf="current_uid == comment.uid.uid">
+                              <a href="javascript:void(0)" (click)="edit_comment(comment.id)">Edit</a>
+                          </span>
+                          <span *ngIf="(current_uid == comment.uid.uid) || (current_uid == uid)">
+                              <a href="javascript:void(0)" (click)="delete_comment(comment.id, post.id)">Delete</a>
+                          </span>
+                      </div>
+                      <div *ngIf="edit === comment.id">
+                          <form action="#" (ngSubmit)="update_comment(post.id)" id="edit_comment" >
+                              <input type="hidden" value="{{comment.id}}" id="c_id" />
+                              <input type="hidden" value="{{current_uid}}" id="uid" />
+                              <input type="hidden" value="{{post.id}}" id="pid" />
+                              <input type="hidden" value="{{comment.created_date}}" id="created_date" />
+                              <textarea class="photo__add-comment" id="existing_comment" required>{{existing_comment}}</textarea>
+                              <input type="submit" value="..." class="comment_button" />
+                          </form>
+                      </div>
+                    </li>
+                </ul>
+                <span class="photo__time-ago">11 hours ago</span>
+                <div class="photo__add-comment-container">
+                    <form action="#" (ngSubmit)="add_new_comment(post.id)" >
+                        <textarea placeholder="Add a comment..." class="photo__add-comment" id="{{post.id}}" ></textarea>
+                        <!-- <span (click)="add_new_comment()"><i class="fa fa-ellipsis-h"></i></span> -->
+                        <input type="hidden" id="pid" value="{{post.id}}" />
+                        <input type="submit" value="..." class="comment_button" />
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
 </ion-content>
